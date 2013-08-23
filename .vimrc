@@ -10,7 +10,6 @@ filetype plugin indent on
 set number
 set colorcolumn=81
 set background=dark
-colorscheme evening
 
 "" Whitespace
 set nowrap
@@ -24,6 +23,10 @@ set smartcase	" ...unless they contain at least 1 capital letter
 
 source ~/.vim/cscope_maps.vim
 source ~/.vim/vundle.vim
+
+"" For solarized
+set g:solarized_contrast="high"
+colorscheme solarized
 
 "" For Cscope
 map <C-Space> <C-@>
@@ -41,7 +44,7 @@ function! SmoothScroll(up)
     let counter=1
     while counter<&scroll
         let counter+=1
-        sleep 3m
+        sleep 2m
         redraw
         exec "normal " . scrollaction
     endwhile
