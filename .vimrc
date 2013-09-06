@@ -16,12 +16,18 @@ set nowrap
 set tabstop=4 shiftwidth=4
 
 "" Searching
-set hlsearch 	" highlight matches
+set hlsearch 	" highlight matches, to unhighlight ':nohl'
 set incsearch	" highlight matches as pattern is typed
 set ignorecase	" searches are case insensitive
 set smartcase	" ...unless they contain at least 1 capital letter
 
-source ~/.vim/cscope_maps.vim
+" Switching windows shortcut
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
+
+"" Vundle
 source ~/.vim/vundle.vim
 
 "" For solarized
@@ -29,6 +35,7 @@ set g:solarized_contrast="high"
 colorscheme solarized
 
 "" For Cscope
+source ~/.vim/cscope_maps.vim
 map <C-Space> <C-@>
 vnoremap <C-r> "hy:.,$s/<C-r>h//gc<left><left><left>
 
