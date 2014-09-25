@@ -1,0 +1,10 @@
+
+*.sw[po]
+
+# Let Vundle take care of installing all the plugins
+.vim/bundle/*
+# Except Vundle can't install itself, so leave Vundle's submodule in
+!.vim/bundle/Vundle.vim
+
+.netrwhist
+

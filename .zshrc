@@ -1,6 +1,24 @@
+# Zshrc
+# Chip Jackson
+#
+# Commands to remember:
+# fc - open last command in text editor
+#
 # prompt
 autoload -U colors && colors
 PROMPT="%{$fg[blue]%}%~ [%?] %# %{$reset_color%}"
+
+# save history
+HISTSIZE=1000
+if (( ! EUID )); then
+  HISTFILE=~/.history_root
+else
+  HISTFILE=~/.history
+fi
+SAVEHIST=1000
+
+# aliases
+alias ls="ls -G"
 
 # mark and jump to directories
 export MARKPATH=$HOME/.marks
@@ -22,3 +40,11 @@ function _completemarks {
 compctl -K _completemarks jump
 compctl -K _completemarks unmark
 
+# for macports
+export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+
+# for homebrew
+export PATH=/usr/local/bin:$PATH
+
+# for fossil
+alias fossil="~/Dropbox/class/cs412/fossil"
