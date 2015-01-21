@@ -37,13 +37,13 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'Solarized'
 Plugin 'Syntastic'
 Plugin 'Valloric/YouCompleteMe'
-
+Plugin 'scrooloose/nerdtree'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
-filetype plugin indent on    " required
+" filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
-"filetype plugin on
+filetype plugin on
 "
 " Brief help
 " :PluginList       - lists configured plugins
@@ -60,9 +60,14 @@ filetype plugin indent on    " required
 colorscheme solarized
 
 " Make it easier to scroll
-noremap H J
-noremap J <C-E>
-map K <C-Y>
+"noremap H J
+"noremap J <C-E>
+"map K <C-Y>
+
+" Open NERDTree with Ctrl-n
+map <C-n> :NERDTreeToggle<CR>
+
+let NERDTreeQuitOnOpen=1
 
 " allows tabbing through files to open
 set wildmenu
@@ -95,37 +100,38 @@ set background=light
 " Don't beep at me
 set visualbell
 
-" Don't insert spaces instead of tabs
+""" Indentation
+" Hard tabs
 set noexpandtab
-
-" Number of spaces used for autoindent
+set softtabstop=0 " (off)
 set shiftwidth=2
-
-" Number of spaces that a tab is equal to
 set tabstop=2
 
+" Soft tabs
+" set expandtab
+" set shiftwidth=2
+" set softtabstop=2
 
-""" Indentation
+" Just copy indentation from last line and I'll take care of the rest
+set autoindent
+
 " More clever version of smartindent for autoindenting code
-set cindent
-
-" Enable loading of plugins specific to filetypes
-filetype plugin on
+" set cindent
 
 " Load indent-expression based on filetype
-filetype indent on
+" filetype indent on
 
 " Custom filetype indentation widths
-autocmd FileType css setlocal shiftwidth=2 tabstop=2
-autocmd FileType cpp setlocal shiftwidth=4 tabstop=4
-autocmd FileType html setlocal shiftwidth=2 tabstop=2
-autocmd FileType markdown setlocal shiftwidth=2 tabstop=2 textwidth=80
-autocmd FileType python setlocal shiftwidth=4 tabstop=4
-autocmd FileType tex setlocal shiftwidth=4 tabstop=4 textwidth=80
-autocmd FileType txt setlocal shiftwidth=2 tabstop=2 textwidth=80
-autocmd FileType json setlocal expandtab shiftwidth=2 softtabstop=2
-autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
-autocmd FileType php setlocal shiftwidth=2 tabstop=2
+" autocmd FileType css setlocal shiftwidth=2 tabstop=2
+" autocmd FileType cpp setlocal shiftwidth=4 tabstop=4
+" autocmd FileType html setlocal shiftwidth=2 tabstop=2
+" autocmd FileType markdown setlocal shiftwidth=2 tabstop=2 textwidth=80
+" autocmd FileType python setlocal shiftwidth=2 tabstop=2
+" autocmd FileType tex setlocal shiftwidth=4 tabstop=4 textwidth=80
+" autocmd FileType txt setlocal shiftwidth=2 tabstop=2 textwidth=80
+" autocmd FileType json setlocal expandtab shiftwidth=2 softtabstop=2
+" autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
+" autocmd FileType php setlocal shiftwidth=2 tabstop=2
 
 " Comment blocks of code using ,cc
 autocmd FileType c,cpp,java,scala,javascript let b:comment_leader = '// '

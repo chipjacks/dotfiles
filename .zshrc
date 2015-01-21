@@ -3,10 +3,14 @@
 #
 # Commands to remember:
 # fc - open last command in text editor
-#
+
 # prompt
 autoload -U colors && colors
 PROMPT="%{$fg[blue]%}%~ [%?] %# %{$reset_color%}"
+
+# git autocompletion
+source ~/dotfiles/git-completion.bash
+# source ~/dotfiles/git-completion.zsh
 
 # save history
 HISTSIZE=1000
@@ -45,6 +49,3 @@ export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 
 # for homebrew
 export PATH=/usr/local/bin:$PATH
-
-# for fossil
-alias fossil="~/Dropbox/class/cs412/fossil"
