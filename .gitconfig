@@ -19,3 +19,5 @@
         ignored = !git ls-files -v | grep "^[[:lower:]]"
 [github]
 	user = chipjacks@gmail.com
+[push]
+	default = simple
