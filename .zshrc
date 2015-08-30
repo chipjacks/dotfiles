@@ -1,6 +1,13 @@
 # load executables from my home dir
 export PATH="$PATH:$HOME/bin"
 
+# load rvm
+source ~/.rvm/scripts/rvm
+
+# git completion
+source ~/dotfiles/git-completion.bash
+zstyle ':completion:*:*:git:*' script ~/dotfiles/git-completion.zsh
+
 # prompt
 autoload -U colors && colors
 source ~/.git-prompt.sh
@@ -20,3 +27,5 @@ alias ls="ls -G"
 
 # use z to jump around filesystem
 . ~/bin/z.sh
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
