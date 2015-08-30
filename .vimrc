@@ -1,8 +1,5 @@
 " Vimrc
 " Chip Jackson
-" My learned shortcuts (that I sometimes forget):
-" ci" - change the text inside the quotes
-" H, M, L - move high, middle, low on screen
 
 " no compatibility with legacy vim
 set nocompatible
@@ -35,9 +32,11 @@ Plugin 'gmarik/Vundle.vim'
 " Avoid a name conflict with L9
 " Plugin 'user/L9', {'name': 'newL9'}
 Plugin 'Solarized'
-Plugin 'Syntastic'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'scrooloose/nerdtree'
+Plugin 'digitaltoad/vim-jade'
+Plugin 'kchmck/vim-coffee-script'
+" Plugin 'Syntastic'
+" Plugin 'Valloric/YouCompleteMe'
+" Plugin 'scrooloose/nerdtree'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -56,18 +55,21 @@ filetype plugin on
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+" Syntax highlighting
+syntax enable
+
 " Use the solarized colorscheme
-colorscheme solarized
+" set background=light
+" colorscheme solarized
 
-" Make it easier to scroll
-"noremap H J
-"noremap J <C-E>
-"map K <C-Y>
+" Tells Vim which syntax highlighting to use
+set background=light
 
-" Open NERDTree with Ctrl-n
-map <C-n> :NERDTreeToggle<CR>
+" Show line numbers
+set number
 
-let NERDTreeQuitOnOpen=1
+" Highlight text column
+" set colorcolumn=81
 
 " allows tabbing through files to open
 set wildmenu
@@ -75,9 +77,6 @@ set wildmenu
 " Filetypes that get lower priority in wildmenu
 set suffixes-=.So,.so.1
 set suffixes+=.So,.so.1
-
-" Syntax highlighting
-syntax enable
 
 " utf-8 encoding
 set encoding=utf-8
@@ -88,29 +87,20 @@ set showcmd
 " Shows location in file at bottom right
 set ruler 
 
-" Show line numbers
-set number
-
-" Highlight text column
-set colorcolumn=81
-
-" Tells Vim which syntax highlighting to use
-set background=light
-
 " Don't beep at me
 set visualbell
 
 """ Indentation
 " Hard tabs
-set noexpandtab
-set softtabstop=0 " (off)
-set shiftwidth=2
-set tabstop=2
+" set noexpandtab
+" set softtabstop=0 " (off)
+" set shiftwidth=2
+" set tabstop=2
 
 " Soft tabs
-" set expandtab
-" set shiftwidth=2
-" set softtabstop=2
+set expandtab
+set shiftwidth=2
+set softtabstop=2
 
 " Just copy indentation from last line and I'll take care of the rest
 set autoindent
@@ -134,8 +124,9 @@ set autoindent
 " autocmd FileType php setlocal shiftwidth=2 tabstop=2
 
 " Comment blocks of code using ,cc
+au BufRead,BufNewFile *.coffee		setfiletype coffeescript
 autocmd FileType c,cpp,java,scala,javascript let b:comment_leader = '// '
-autocmd FileType sh,ruby,python   let b:comment_leader = '# '
+autocmd FileType sh,ruby,python,coffeescript let b:comment_leader = '# '
 autocmd FileType conf,fstab       let b:comment_leader = '# '
 autocmd FileType tex              let b:comment_leader = '% '
 autocmd FileType mail             let b:comment_leader = '> '
@@ -153,7 +144,7 @@ set autowrite
 " Let lines go off edge of view without wrapping
 set nowrap
 
-" Use the same symbols as TextMate for tabstops and EOLs
+" Use the same symbols as TextMate for tabstops and EOLs when I do :set list
 set listchars=tab:▸\ ,eol:¬
 
 " Use Solaried base2 color for tabs, spaces, and eol's
@@ -182,15 +173,8 @@ map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
 
-" For Cscope
-source ~/.vim/cscope_maps.vim
-map <C-Space> <C-@>
+" Expand %% to directory of file your currently editing
+cabbr <expr> %% expand('%:p:h')
+
+" Use visual mode selection for find and replace
 vnoremap <C-r> "hy:.,$s/<C-r>h//gc<left><left><left>
-
-"" For latex
-" LaTeX (rubber) macro for compiling
-nnoremap <leader>c :w<CR>:!rubber --pdf --warn all %<CR>
-
-" View PDF macro; '%:r' is current file's root (base) name.
-nnoremap <leader>v :!open %:r.pdf
-

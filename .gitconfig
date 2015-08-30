@@ -1,0 +1,19 @@
+[user]
+	name = Chip Jackson
+	email = 
+[core]
+	editor = /usr/bin/vim
+	excludesfile = ~/.gitignore
+[credential]
+	helper = osxkeychain
+[alias]
+	co = checkout
+        br = branch
+        ci = commit
+        st = status
+	unstage = reset HEAD --
+        ignore = update-index --assume-unchanged
+        unignore = update-index --no-assume-unchanged
+        ignored = !git ls-files -v | grep "^[[:lower:]]"
+[github]
+	user = 
