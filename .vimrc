@@ -179,3 +179,7 @@ cabbr <expr> %% expand('%:p:h')
 
 " Use visual mode selection for find and replace
 vnoremap <C-r> "hy:.,$s/<C-r>h//gc<left><left><left>
+
+" Use :NewGrep to execute grep command that only shows quickfix window
+" Found this in :help grep
+command! -nargs=+ NewGrep execute 'silent grep! <args>' | copen 42
