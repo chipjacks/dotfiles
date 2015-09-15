@@ -1,6 +1,10 @@
 # load executables from my home dir
 export PATH="$PATH:$HOME/bin"
 
+# git completion
+source ~/dotfiles/git-completion.bash
+zstyle ':completion:*:*:git:*' script ~/dotfiles/git-completion.zsh
+
 # prompt
 autoload -U colors && colors
 source ~/.git-prompt.sh

@@ -1,11 +1,13 @@
 [user]
 	name = Chip Jackson
-	email = 
+	email = chip@factual.com
 [core]
 	editor = /usr/bin/vim
 	excludesfile = ~/.gitignore
 [credential]
 	helper = osxkeychain
+[diff]
+	tool = gvimdiff
 [alias]
 	co = checkout
         br = branch
@@ -16,4 +18,4 @@
         unignore = update-index --no-assume-unchanged
         ignored = !git ls-files -v | grep "^[[:lower:]]"
 [github]
-	user = 
+	user = chip@factual.com
