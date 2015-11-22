@@ -28,4 +28,8 @@ alias ls="ls -G"
 # use z to jump around filesystem
 . ~/bin/z.sh
 
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+# rvm
+export PATH="$PATH:$HOME/.rvm/bin"
+
+# postgres
+export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/9.4/bin
