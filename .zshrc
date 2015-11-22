@@ -1,9 +1,6 @@
 # load executables from my home dir
 export PATH="$PATH:$HOME/bin"
 
-# load rvm
-source ~/.rvm/scripts/rvm
-
 # git completion
 source ~/dotfiles/git-completion.bash
 zstyle ':completion:*:*:git:*' script ~/dotfiles/git-completion.zsh

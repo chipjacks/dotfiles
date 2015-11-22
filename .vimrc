@@ -35,6 +35,8 @@ Plugin 'Solarized'
 Plugin 'digitaltoad/vim-jade'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'tpope/vim-rails'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'mileszs/ack.vim'
 " Plugin 'Syntastic'
 " Plugin 'Valloric/YouCompleteMe'
 " Plugin 'scrooloose/nerdtree'
@@ -124,6 +126,10 @@ set autoindent
 " autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
 " autocmd FileType php setlocal shiftwidth=2 tabstop=2
 
+
+" detecting filetypes
+au BufNewFile,BufRead *.md set filetype=markdown
+
 " Comment blocks of code using ,cc
 au BufRead,BufNewFile *.coffee		setfiletype coffeescript
 autocmd FileType c,cpp,java,scala,javascript let b:comment_leader = '// '
@@ -137,7 +143,7 @@ noremap <silent> ,cc :<C-B>silent <C-E>s/^/<C-R>=escape(b:comment_leader,'\/')<C
 noremap <silent> ,cu :<C-B>silent <C-E>s/^\V<C-R>=escape(b:comment_leader,'\/')<CR>//e<CR>:nohlsearch<CR>
 
 "" Autosave everything when window loses focus
-:au FocusLost * :wa
+au FocusLost * :wa
 
 "" Autosave on buffer switch
 set autowrite
@@ -179,3 +185,20 @@ cabbr <expr> %% expand('%:p:h')
 
 " Use visual mode selection for find and replace
 vnoremap <C-r> "hy:.,$s/<C-r>h//gc<left><left><left>
+
+" Use :NewGrep to execute grep command that only shows quickfix window
+" Found this in :help grep
+command! -nargs=+ NewGrep execute 'silent grep! <args>' | copen 42
+
+" Preview hunk changes with GitGutter
+nmap <Leader>d <Plug>GitGutterPreviewHunk
+nmap <Leader>r <Plug>GitGutterRevertHunk
+
+" Explore current directory
+nmap <Leader>. :e %:p:h<CR>
+
+" Turn off search highlighting
+nmap <Leader>h :nohl<CR>
+
+" Use ag (the silver searcher) instead of ack with ack.vim
+let g:ackprg = 'ag --nogroup --nocolor --column'
