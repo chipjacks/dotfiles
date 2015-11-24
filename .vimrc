@@ -202,3 +202,6 @@ nmap <Leader>h :nohl<CR>
 
 " Use ag (the silver searcher) instead of ack with ack.vim
 let g:ackprg = 'ag --nogroup --nocolor --column'
+
+" Autoread files when they change
+set autoread
