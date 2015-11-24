@@ -20,7 +20,7 @@ fi
 SAVEHIST=1000
 
 # aliases
-alias ls="ls -G"
+alias ls='ls -Glth'
 
 # use z to jump around filesystem
 . ~/bin/z.sh
