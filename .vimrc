@@ -200,6 +200,11 @@ nmap <Leader>. :e %:p:h<CR>
 " Turn off search highlighting
 nmap <Leader>h :nohl<CR>
 
+" shortcuts to quit, edit, search, and switch buffers
+nmap <C-e> :e 
+nmap <C-a> :Ack 
+nmap <C-b> :ls<CR>:b 
+
 " Use ag (the silver searcher) instead of ack with ack.vim
 let g:ackprg = 'ag --nogroup --nocolor --column'
 
