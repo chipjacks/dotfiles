@@ -38,6 +38,8 @@ Plugin 'tpope/vim-rails'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'mileszs/ack.vim'
 Bundle 'jlanzarotta/bufexplorer'
+Plugin 'tpope/vim-fugitive'
+
 " Plugin 'Syntastic'
 " Plugin 'Valloric/YouCompleteMe'
 " Plugin 'scrooloose/nerdtree'
@@ -127,7 +129,6 @@ set autoindent
 " autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
 " autocmd FileType php setlocal shiftwidth=2 tabstop=2
 
-
 " detecting filetypes
 au BufNewFile,BufRead *.md set filetype=markdown
 
@@ -143,11 +144,8 @@ autocmd FileType html              let b:comment_leader = '// '
 noremap <silent> ,cc :<C-B>silent <C-E>s/^/<C-R>=escape(b:comment_leader,'\/')<CR>/<CR>:nohlsearch<CR>
 noremap <silent> ,cu :<C-B>silent <C-E>s/^\V<C-R>=escape(b:comment_leader,'\/')<CR>//e<CR>:nohlsearch<CR>
 
-"" Autosave everything when window loses focus
+" autosave (only works for gvim)
 au FocusLost * :wa
-
-"" Autosave on buffer switch
-set autowrite
 
 " Let lines go off edge of view without wrapping
 set nowrap
@@ -201,10 +199,15 @@ nmap <Leader>. :e %:p:h<CR>
 " Turn off search highlighting
 nmap <Leader>h :nohl<CR>
 
-" shortcuts to quit, edit, search, and switch buffers
+" shortcuts for frequently used commands
 nmap <C-e> :e 
-nmap <C-a> :Ack 
+nmap <C-a> :Ack! 
 nmap <C-b> :ls<CR>:b 
+nmap <C-n> :tabedit %<CR>
+
+" save and quit. if ctrl-s hangs check out: http://unix.stackexchange.com/questions/72086/ctrl-s-hang-terminal-emulator
+nmap <C-s> :w<CR>
+nmap <C-q> :q<CR>
 
 " Use ag (the silver searcher) instead of ack with ack.vim
 let g:ackprg = 'ag --nogroup --nocolor --column'
