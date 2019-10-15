@@ -1,6 +1,6 @@
 [user]
 	name = Chip Jackson
-	email = chip@factual.com
+	email = chipjacks@gmail.com
 [core]
 	editor = /usr/bin/vim
 	excludesfile = ~/.gitignore
@@ -18,4 +18,6 @@
         unignore = update-index --no-assume-unchanged
         ignored = !git ls-files -v | grep "^[[:lower:]]"
 [github]
-	user = chip@factual.com
+	user = chipjacks@gmail.com
+[push]
+	default = simple

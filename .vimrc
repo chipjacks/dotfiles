@@ -31,16 +31,12 @@ Plugin 'gmarik/Vundle.vim'
 " Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 " Avoid a name conflict with L9
 " Plugin 'user/L9', {'name': 'newL9'}
-Plugin 'Solarized'
-Plugin 'digitaltoad/vim-jade'
-Plugin 'kchmck/vim-coffee-script'
-Plugin 'tpope/vim-rails'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'mileszs/ack.vim'
-Bundle 'jlanzarotta/bufexplorer'
+Plugin 'Zaptic/elm-vim'
+Plugin 'stefandtw/quickfix-reflector.vim'
+Plugin 'Syntastic'
 Plugin 'tpope/vim-fugitive'
-
-" Plugin 'Syntastic'
 " Plugin 'Valloric/YouCompleteMe'
 " Plugin 'scrooloose/nerdtree'
 
@@ -49,27 +45,11 @@ call vundle#end()            " required
 " filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
 filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Syntax highlighting
 syntax enable
-
-" Use the solarized colorscheme
-" set background=light
-" colorscheme solarized
-
-" Tells Vim which syntax highlighting to use
-set background=light
 
 " Show line numbers
 set number
@@ -115,7 +95,7 @@ set autoindent
 " set cindent
 
 " Load indent-expression based on filetype
-" filetype indent on
+filetype indent on
 
 " Custom filetype indentation widths
 " autocmd FileType css setlocal shiftwidth=2 tabstop=2
@@ -126,11 +106,12 @@ set autoindent
 " autocmd FileType tex setlocal shiftwidth=4 tabstop=4 textwidth=80
 " autocmd FileType txt setlocal shiftwidth=2 tabstop=2 textwidth=80
 " autocmd FileType json setlocal expandtab shiftwidth=2 softtabstop=2
-" autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
-" autocmd FileType php setlocal shiftwidth=2 tabstop=2
+autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
+autocmd FileType elm setlocal shiftwidth=4 tabstop=4 softtabstop=4
 
 " detecting filetypes
 au BufNewFile,BufRead *.md set filetype=markdown
+au BufNewFile,BufRead *.elm set filetype=elm
 
 " Comment blocks of code using ,cc
 au BufRead,BufNewFile *.coffee		setfiletype coffeescript
@@ -141,21 +122,24 @@ autocmd FileType tex              let b:comment_leader = '% '
 autocmd FileType mail             let b:comment_leader = '> '
 autocmd FileType vim              let b:comment_leader = '" '
 autocmd FileType html              let b:comment_leader = '// '
+autocmd FileType elm              let b:comment_leader = '-- '
+
 noremap <silent> ,cc :<C-B>silent <C-E>s/^/<C-R>=escape(b:comment_leader,'\/')<CR>/<CR>:nohlsearch<CR>
 noremap <silent> ,cu :<C-B>silent <C-E>s/^\V<C-R>=escape(b:comment_leader,'\/')<CR>//e<CR>:nohlsearch<CR>
 
 " autosave (only works for gvim)
 au FocusLost * :wa
 
+colorscheme slate
+
+"" Autosave on buffer switch
+set autowrite
+
 " Let lines go off edge of view without wrapping
 set nowrap
 
 " Use the same symbols as TextMate for tabstops and EOLs when I do :set list
 set listchars=tab:▸\ ,eol:¬
-
-" Use Solaried base2 color for tabs, spaces, and eol's
-highlight NonText guifg=#93a1a1
-highlight SpecialKey guifg=#93a1a1
 
 """ Searching
 " highlight matches
@@ -185,13 +169,10 @@ cabbr <expr> %% expand('%:p:h')
 " Use visual mode selection for find and replace
 vnoremap <C-r> "hy:.,$s/<C-r>h//gc<left><left><left>
 
-" Use :NewGrep to execute grep command that only shows quickfix window
-" Found this in :help grep
-command! -nargs=+ NewGrep execute 'silent grep! <args>' | copen 42
-
 " Preview hunk changes with GitGutter
 nmap <Leader>d <Plug>GitGutterPreviewHunk
-nmap <Leader>r <Plug>GitGutterRevertHunk
+nmap <Leader>r <Plug>GitGutterUndoHunk
+nmap <Leader>s <Plug>GitGutterStageHunk
 
 " Explore current directory
 nmap <Leader>. :e %:p:h<CR>
@@ -199,18 +180,22 @@ nmap <Leader>. :e %:p:h<CR>
 " Turn off search highlighting
 nmap <Leader>h :nohl<CR>
 
-" shortcuts for frequently used commands
-nmap <C-e> :e 
-nmap <C-a> :Ack! 
-nmap <C-b> :ls<CR>:b 
-nmap <C-n> :tabedit %<CR>
+" Show open buffers
+nmap <Leader>b :ls<CR>:b 
 
 " save and quit. if ctrl-s hangs check out: http://unix.stackexchange.com/questions/72086/ctrl-s-hang-terminal-emulator
-nmap <C-s> :w<CR>
-nmap <C-q> :q<CR>
+map <C-s> :w<CR>
+map <C-q> :q<CR>
 
 " Use ag (the silver searcher) instead of ack with ack.vim
 let g:ackprg = 'ag --nogroup --nocolor --column'
+map <C-a> :Ack 
 
 " Autoread files when they change
 set autoread
+
+" Don't use elm keybindings cuz they interfere with GitGutter
+let g:elm_setup_keybindings = 0
+
+nmap <Leader>t :tabnew %<CR>
+nmap <Leader>b :ls <CR>:b 
