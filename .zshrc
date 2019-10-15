@@ -8,7 +8,7 @@ zstyle ':completion:*:*:git:*' script ~/dotfiles/git-completion.zsh
 # prompt
 autoload -U colors && colors
 source ~/.git-prompt.sh
-setopt PROMPT_SUBST ; PROMPT='%{$fg[yellow]%}%~$(__git_ps1 " (%s)") > %{$reset_color%}'
+setopt PROMPT_SUBST ; PROMPT='%{$fg[green]%}%~$(__git_ps1 " (%s)") > %{$reset_color%}'
 
 # save history
 HISTSIZE=1000
@@ -25,8 +25,11 @@ alias ls="ls -G"
 # use z to jump around filesystem
 . ~/bin/z.sh
 
-# rvm
-export PATH="$PATH:$HOME/.rvm/bin"
-
 # postgres
 export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/9.4/bin
+
+# rbenv
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+
+export PGDATA="/usr/local/var/postgres/"

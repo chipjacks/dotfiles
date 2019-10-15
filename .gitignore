@@ -8,4 +8,9 @@
 
 .netrwhist
 
+.vscode
+
 tags
+
+elm-stuff
+.DS_Store
