@@ -19,17 +19,6 @@ else
 fi
 SAVEHIST=1000
 
-# aliases
-alias ls='ls -Glth'
-
-# use z to jump around filesystem
-. ~/bin/z.sh
-
-# postgres
-export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/9.4/bin
-
 # rbenv
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
-
-export PGDATA="/usr/local/var/postgres/"
