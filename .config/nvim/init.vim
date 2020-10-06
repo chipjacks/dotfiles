@@ -100,6 +100,10 @@ nmap <C-b> :ls <CR>:b
 " Open Gstatus window height
 map <C-g> :15Gstatus<CR>
 
+" Jump between changes in a file
+map <C-n> :GitGutterNextHunk<CR>
+map <C-p> :GitGutterPrevHunk<CR>
+
 " Open file with fzf
 map <C-f> :GFiles<CR>
 
