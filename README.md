@@ -9,19 +9,13 @@ To set them up:
 ```
 cd ~
 git clone https://github.com/chipjacks/dotfiles
-ln -s ~/dotfiles/.vimrc ~/.vimrc
-ln -s ~/dotfiles/.vim ~/.vim
-ln -s [whatever else needs to be in my home dir]
+cd dotfiles
+sh -c 'source bootstrap.sh'
 ```
 
 2) Open Vim and install plugins using Vundle:
 ```
 :PluginInstall
-```
-
-3) Compile YouCompleteMe
-```
-~/.vim/bundle/YouCompleteMe/install.sh --clang-completer
 ```
 
 4) Call it a day
