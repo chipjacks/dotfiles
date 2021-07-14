@@ -1,6 +1,6 @@
 [user]
 	name = Chip Jackson
-	email = chip.jackson@faithlife.com
+	email = chipjacks@gmail.com
 [core]
 	editor = /usr/bin/vim
 	excludesfile = ~/.gitignore

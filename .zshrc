@@ -22,3 +22,5 @@ SAVEHIST=1000
 # rbenv
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
+
+source ~/.iterm2_shell_integration.zsh
