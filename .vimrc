@@ -77,6 +77,8 @@ nmap <C-h> <C-w>h
 nmap <C-j> <C-w>j
 nmap <C-k> <C-w>k
 nmap <C-l> <C-w>l
+" preserve window switching <c-l> behavior in netrw
+autocmd filetype netrw nnoremap <buffer> <c-l> <c-w>l
 
 " Explore current directory
 nmap <Leader>. :e %:p:h<CR>
@@ -118,13 +120,8 @@ autocmd BufWritePre *.jsx Prettier
 " custom indentation
 filetype indent on
 
-" preserve window switching <c-l> behavior in netrw
-autocmd filetype netrw nnoremap <buffer> <c-l> <c-w>l
 
-
-""" Elm settings
+""" elm-vim settings
 
 let g:elm_format_autosave = 1
 let g:elm_format_fail_silently = 1
-
-autocmd FileType elm setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandtab
