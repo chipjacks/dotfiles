@@ -13,8 +13,6 @@ Plug 'stefandtw/quickfix-reflector.vim'
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 
-Plug 'sonph/onehalf', { 'rtp': 'vim' }
-
 Plug 'Zaptic/elm-vim'
 
 Plug 'prettier/vim-prettier', {
@@ -23,7 +21,7 @@ Plug 'prettier/vim-prettier', {
 call plug#end()
 
 " Use ag (the silver searcher) instead of ack with ack.vim
-let g:ackprg = 'ag --nogroup --nocolor --column'
+let g:ackprg = 'git grep -n'
 let g:ack_apply_qmappings = 0
 let g:ack_apply_lmappings = 0
 
@@ -40,7 +38,11 @@ let g:gitgutter_preview_win_floating = 0
 
 """ SETTINGS +++++++++++++++++++++++++++++++++++++++++++++++
 
-colorscheme onehalfdark 
+colorscheme pablo
+
+" Git Gutter colors
+highlight! link SignColumn LineNr
+let g:gitgutter_set_sign_backgrounds = 1
 
 "" Autosave on buffer switch
 "" FocusLost/Gained needs vitality.vim installed to work in iTerm
@@ -94,7 +96,7 @@ map <C-q> :q<CR>
 " Open current file in new tab
 nmap <C-t> :tabnew %<CR>
 
-map <C-a> :Ack 
+map <C-a> :Ack!
 
 " List open buffers
 nmap <C-b> :ls <CR>:b 
