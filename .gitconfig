@@ -1,6 +1,6 @@
 [user]
 	name = Chip Jackson
-	email = chipjacks@gmail.com
+	email = chipj@ziprecruiter.com
 [core]
 	editor = /usr/bin/vim
 	excludesfile = ~/.gitignore
@@ -13,11 +13,17 @@
         br = branch
         ci = commit
         st = status
+	sts = status -uno
 	unstage = reset HEAD --
         ignore = update-index --assume-unchanged
         unignore = update-index --no-assume-unchanged
         ignored = !git ls-files -v | grep "^[[:lower:]]"
+	pushf = push --force-with-lease
 [github]
 	user = chipjacks@gmail.com
 [push]
 	default = simple
+[pull]
+	rebase = true
+[protocol]
+	version = 2
