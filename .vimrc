@@ -21,7 +21,7 @@ Plug 'prettier/vim-prettier', {
 call plug#end()
 
 " Use ag (the silver searcher) instead of ack with ack.vim
-let g:ackprg = 'git grep -n'
+let g:ackprg = 'git grep -n '
 let g:ack_apply_qmappings = 0
 let g:ack_apply_lmappings = 0
 
@@ -96,7 +96,7 @@ map <C-q> :q<CR>
 " Open current file in new tab
 nmap <C-t> :tabnew %<CR>
 
-map <C-a> :Ack!
+map <C-a> :Ack! -- 
 
 " List open buffers
 nmap <C-b> :ls <CR>:b 
