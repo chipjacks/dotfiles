@@ -34,6 +34,7 @@ export PATH=$(npm bin -g):$PATH
 
 export STARTERVIEW=$HOME/ziprecruiter
 export PATH=$STARTERVIEW/bin:$PATH
+export PATH=$STARTERVIEW/infrastructure/terraform/bin:$PATH
 
 alias zamu="$STARTERVIEW/bin/laptop/macos/zamu.scpt"
 
