@@ -116,8 +116,8 @@ map <C-f> :GFiles<CR>
 " detecting
 au BufNewFile,BufRead *.md set filetype=markdown
 
-autocmd BufWritePre *.js Prettier
-autocmd BufWritePre *.jsx Prettier
+" autocmd BufWritePre *.js Prettier
+" autocmd BufWritePre *.jsx Prettier
 
 " custom indentation
 filetype indent on
