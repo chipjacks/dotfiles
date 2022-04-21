@@ -98,6 +98,9 @@ nmap <C-t> :tabnew %<CR>
 
 map <C-a> :Ack! -- 
 
+" Open quickfix item in most recently used window
+set switchbuf+=uselast
+
 " List open buffers
 nmap <C-b> :ls <CR>:b 
 
