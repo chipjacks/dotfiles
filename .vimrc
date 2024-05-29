@@ -89,6 +89,9 @@ nmap - :e %:p:h<CR>
 " Use visual mode selection for find and replace
 vnoremap <C-r> "hy:.,$s/<C-r>h//gc<left><left><left>
 
+" Use visual mode selection for search
+vnoremap <C-w> "hy:Ack! -- <C-r>h
+
 " Save and quit
 map <C-s> :w<CR>
 map <C-q> :q<CR>
@@ -105,7 +108,7 @@ set switchbuf+=uselast
 nmap <C-b> :ls <CR>:b 
 
 " Open Gstatus window height
-map <C-g> :15Gstatus<CR>
+map <C-g> :15Git<CR>
 
 " Jump between changes in a file
 map <C-n> :GitGutterNextHunk<CR>

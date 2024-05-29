@@ -4,8 +4,10 @@
 [core]
 	editor = /usr/bin/vim
 	excludesfile = ~/.gitignore
+	fsmonitor = true
+	untrackedcache = true
 [credential]
-	helper = osxkeychain
+	helper = 
 [diff]
 	tool = gvimdiff
 [alias]
@@ -13,7 +15,7 @@
         br = branch
         ci = commit
         st = status
-	sts = status -uno
+	ix = diff --cached
 	unstage = reset HEAD --
         ignore = update-index --assume-unchanged
         unignore = update-index --no-assume-unchanged
@@ -27,5 +29,11 @@
 	rebase = true
 [protocol]
 	version = 2
+[credential "https://git.zr.org"]
+	helper = /Applications/zam.app/Contents/MacOS/zam git-credential-gitlab
+[credential "https://test-git.zr.org"]
+	helper = /Applications/zam.app/Contents/MacOS/zam git-credential-gitlab
 [merge]
 	conflictstyle = diff3
+[maintenance]
+	repo = /Users/chipj/ziprecruiter

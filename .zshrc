@@ -11,26 +11,33 @@ source ~/.git-prompt.sh
 setopt PROMPT_SUBST ; PROMPT='%{$fg[green]%}%~$(__git_ps1 " (%s)") > %{$reset_color%}'
 
 # save history
-HISTSIZE=1000
+export HISTSIZE=50000
+export HISTFILESIZE=50000
+export SAVEHIST=50000
+#append into history file
+setopt INC_APPEND_HISTORY
+#save only one command if 2 common are same and consistent
+setopt HIST_IGNORE_DUPS
 if (( ! EUID )); then
   HISTFILE=~/.history_root
 else
   HISTFILE=~/.history
 fi
-SAVEHIST=1000
+
+# allow wildcards in reverse command history search
+bindkey '^R' history-incremental-pattern-search-backward
+
+# fixes slow git path completion in large monorepos
+# https://superuser.com/questions/458906/zsh-tab-completion-of-git-commands-is-very-slow-how-can-i-turn-it-off
+__git_files () {
+    _wanted files expl 'local files' _files
+}
 
 source ~/perl5/perlbrew/etc/bashrc
 
 source ~/.iterm2_shell_integration.zsh
 
 [ -f /usr/local/opt/asdf/asdf.sh ] && source /usr/local/opt/asdf/asdf.sh
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-export NODE_PATH=$(npm root -g)
-export PATH=$(npm bin -g):$PATH
 
 export STARTERVIEW=$HOME/ziprecruiter
 export PATH=$STARTERVIEW/bin:$PATH
@@ -40,16 +47,20 @@ alias zamu="$STARTERVIEW/bin/laptop/macos/zamu.scpt"
 
 export PATH="$HOME/go/bin:$PATH"
 
+export PATH="/usr/local/opt/node@18/bin:$PATH"
+
 . $STARTERVIEW/frontend/devxp/helpers.bash
 
 alias grm="git fetch -p && git rebase --autostash origin/main"
 
 export KUBECONFIG="$HOME/.kube/configs/d1-dev-uw2"
 
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init --path)"
-
 export WORKSPACE="d-chipj01"
+
+function devxpod() { kc get pods --all-namespaces | grep chipj | grep "$1" | cut -f 2 -w }
+
+export JAVA_HOME=/Users/chipj/java/installations/x64/java-11.0.20.8.1/Contents/Home
+export PATH=$JAVA_HOME/bin:$PATH
+export PATH=/Users/chipj/gradle/bin:$PATH
 
 cd $STARTERVIEW

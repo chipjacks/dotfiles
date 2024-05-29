@@ -10,6 +10,7 @@ function dryRun() {
 	rsync --exclude ".git/" \
 		--exclude ".DS_Store" \
 		--exclude "bootstrap.sh" \
+		--exclude ".config/" \
 		--exclude "README.md" \
 		--exclude "git-completion.bash" \
 		--exclude "git-completion.zsh" \
@@ -19,6 +20,7 @@ function dryRun() {
 function doIt() {
 	rsync --exclude ".git/" \
 		--exclude ".DS_Store" \
+		--exclude ".config/" \
 		--exclude "bootstrap.sh" \
 		--exclude "README.md" \
 		--exclude "git-completion.bash" \
