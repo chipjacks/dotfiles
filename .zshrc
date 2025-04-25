@@ -19,6 +19,9 @@ else
 fi
 SAVEHIST=1000
 
+# Added by `rbenv init` on Fri Apr 25 08:05:49 PDT 2025
+eval "$(rbenv init - --no-rehash zsh)"
+
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
 source ~/.iterm2_shell_integration.zsh
